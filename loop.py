@@ -35,7 +35,6 @@ while salir == False:
         if event.type == actualiza_juego and mi_juego.game_over == False:
             mi_juego.mover_abajo()
 
-
     # Dibuja
     screen.fill(dorado_grid)
     mi_juego.dibuja(screen)
