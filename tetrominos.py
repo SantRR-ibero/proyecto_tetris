@@ -7,7 +7,7 @@ from posicion import Posicion
  
 class IBloque(Bloque):
     def __init__(self):
-        super().__init__(pr_id = 1)
+        super().__init__(pr_id = 0)
         self.celdas = {
             0: [Posicion(1, 0), Posicion(1, 1), Posicion(1, 2), Posicion(1, 3)],                    
             1: [Posicion(0, 2), Posicion(1, 2), Posicion(2, 2), Posicion(3, 2)],                
@@ -20,7 +20,7 @@ class IBloque(Bloque):
 
 class JBloque(Bloque):
     def __init__(self):
-        super().__init__(pr_id = 2)
+        super().__init__(pr_id = 1)
         self.celdas = {
             0: [Posicion(0, 0), Posicion(1, 0), Posicion(1, 1), Posicion(1, 2)],
             1: [Posicion(0, 1), Posicion(0, 2), Posicion(1, 1), Posicion(2, 1)],
@@ -33,7 +33,7 @@ class JBloque(Bloque):
 
 class LBloque(Bloque):
     def __init__(self):
-        super().__init__(pr_id = 3)
+        super().__init__(pr_id = 2)
         self.celdas = {
             0: [Posicion(0, 2), Posicion(1, 0), Posicion(1, 1), Posicion(1, 2)],
             1: [Posicion(0, 1), Posicion(1, 1), Posicion(2, 1), Posicion(2, 2)],
@@ -46,7 +46,7 @@ class LBloque(Bloque):
 
 class OBloque(Bloque):
     def __init__(self):
-        super().__init__(pr_id = 4)
+        super().__init__(pr_id = 3)
         self.celdas = {
             0: [Posicion(0, 0), Posicion(0, 1), Posicion(1, 0), Posicion(1, 1)],
             1: [Posicion(0, 0), Posicion(0, 1), Posicion(1, 0), Posicion(1, 1)],
@@ -59,7 +59,7 @@ class OBloque(Bloque):
 
 class SBloque(Bloque):
     def __init__(self):
-        super().__init__(pr_id = 5)
+        super().__init__(pr_id = 4)
         self.celdas = {
             0: [Posicion(0, 1), Posicion(0, 2), Posicion(1, 0), Posicion(1, 1)],
             1: [Posicion(0, 1), Posicion(1, 1), Posicion(1, 2), Posicion(2, 2)],
@@ -72,7 +72,7 @@ class SBloque(Bloque):
 
 class TBloque(Bloque):
     def __init__(self):
-        super().__init__(pr_id = 6)
+        super().__init__(pr_id = 5)
         self.celdas = {
             0: [Posicion(0, 1), Posicion(1, 0), Posicion(1, 1), Posicion(1, 2)],
             1: [Posicion(0, 1), Posicion(1, 1), Posicion(1, 2), Posicion(2, 1)],
@@ -85,7 +85,7 @@ class TBloque(Bloque):
 
 class ZBloque(Bloque):
     def __init__(self):
-        super().__init__(pr_id = 7)
+        super().__init__(pr_id = 6)
         self.celdas = {
             0: [Posicion(0, 0), Posicion(0, 1), Posicion(1, 1), Posicion(1, 2)],
             1: [Posicion(0, 2), Posicion(1, 1), Posicion(1, 2), Posicion(2, 1)],
