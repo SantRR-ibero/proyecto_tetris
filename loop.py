@@ -1,14 +1,10 @@
 import pygame
 import sys
 from juego import Juego
-from colores import Colores
 
 pygame.init()
-
-fuente_titulo = pygame.font.Font(None, 40) # Dejarlo como None trae la fuente por defecto de pygame
-superficie_puntaje = fuente_titulo.render("Score", True, Colores.blanco)
-
-screen      = pygame.display.set_mode((500, 620))
+dorado_grid = (41, 56, 69)
+screen      = pygame.display.set_mode((600, 600))
 pygame.display.set_caption("Tetris")
 
 reloj   = pygame.time.Clock()
@@ -39,8 +35,9 @@ while salir == False:
         if event.type == actualiza_juego and mi_juego.game_over == False:
             mi_juego.mover_abajo()
 
+
     # Dibuja
-    screen.fill(Colores.dorado)
+    screen.fill(dorado_grid)
     mi_juego.dibuja(screen)
     pygame.display.flip()
     reloj.tick(60)
