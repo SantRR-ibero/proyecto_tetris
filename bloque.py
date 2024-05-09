@@ -35,12 +35,12 @@ class Bloque:
     def deshacer_rotar(self):
         self.estado_rotacion -= 1
         if self.estado_rotacion == -1:
-            self.estado_rotacion = 0
+            self.estado_rotacion = len(self.celdas) - 1
         return
 
-    def dibuja(self, screen):
+    def dibuja(self, screen, desfase_x, desfase_y):
         losas = self.get_posicion_celda()
         for losa in losas:
-            rectangulo_losa = pygame.Rect(losa.columna * self.cell_size + 1, losa.fila * self.cell_size + 1, self.cell_size - 1, self.cell_size - 1)
+            rectangulo_losa = pygame.Rect(desfase_x + losa.columna * self.cell_size, desfase_y + losa.fila * self.cell_size, self.cell_size - 1, self.cell_size - 1)
             pygame.draw.rect(screen, self.colores[self.id], rectangulo_losa)
         return

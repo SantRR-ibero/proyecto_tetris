@@ -56,6 +56,6 @@ class Grid:
         for fila in range(self.numero_filas):
             for columna in range(self.numero_columnas):
                 valor_celda = self.grid[fila][columna]
-                rectangulo_celda = pygame.Rect(columna * self.size_celda + 1, fila * self.size_celda + 1, self.size_celda - 1, self.size_celda - 1)
+                rectangulo_celda = pygame.Rect(columna * self.size_celda + 11, fila * self.size_celda + 11, self.size_celda - 1, self.size_celda - 1)
                 pygame.draw.rect(screen, self.colores[valor_celda], rectangulo_celda)
         return

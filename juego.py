@@ -1,4 +1,5 @@
 import random
+import pygame
 from tetrominos import *
 from grid import Grid
 
@@ -9,6 +10,24 @@ class Juego:
         self.bloque_actual    = self.get_bloque_random()
         self.bloque_siguiente = self.get_bloque_random()
         self.game_over        = False
+        self.puntaje          = 0
+        pygame.mixer.music.load("song.mp3")
+        pygame.mixer.music.play(-1) # El argumento -1 en la función play indica que se debe de poner en ciclo indefinidamente
+        self.sonido_rotar = pygame.mixer.Sound("rotate.mp3")
+        self.sonido_clear = pygame.mixer.Sound("clear.mp3")
+        return
+    
+    def actualiza_puntaje(self, lineas_despejadas, puntos_mover_abajo):
+        if lineas_despejadas == 1:
+            self.puntaje += 100
+        elif lineas_despejadas == 2:
+            self.puntaje += 300
+        elif lineas_despejadas == 3:
+            self.puntaje += 500
+        elif lineas_despejadas == 4:
+            self.puntaje += 700
+        self.puntaje += puntos_mover_abajo
+        return
         
     def get_bloque_random(self):
         if len(self.bloques) == 0:
@@ -40,6 +59,8 @@ class Juego:
         self.bloque_actual.rotar()
         if self.bloque_adentro() == False or self.bloque_entra() == False:
             self.bloque_actual.deshacer_rotar()
+        else:
+            self.sonido_rotar.play()
         return
 
     def bloquear_bloque(self):
@@ -48,7 +69,10 @@ class Juego:
             self.grid.grid[posicion.fila][posicion.columna] = self.bloque_actual.id
         self.bloque_actual = self.bloque_siguiente
         self.bloque_siguiente = self.get_bloque_random()
-        self.grid.limpia_fila_completa()
+        lineas_despejadas = self.grid.limpia_fila_completa()
+        if lineas_despejadas > 0:
+            self.sonido_clear.play()
+        self.actualiza_puntaje(lineas_despejadas, 0)
         if self.bloque_entra() == False:
             self.game_over = True
         return
@@ -72,8 +96,16 @@ class Juego:
         self.bloques          = [IBloque(), JBloque(), LBloque(), OBloque(), SBloque(), TBloque(), ZBloque()]
         self.bloque_actual    = self.get_bloque_random()
         self.bloque_siguiente = self.get_bloque_random()
+        self.puntaje          = 0
         return
 
     def dibuja(self, screen):
         self.grid.dibuja(screen)
-        self.bloque_actual.dibuja(screen)
+        self.bloque_actual.dibuja(screen , 11, 11)
+        if self.bloque_siguiente.id == 1:
+            self.bloque_siguiente.dibuja(screen, 255, 290)
+        elif self.bloque_siguiente.id == 4:
+            self.bloque_siguiente.dibuja(screen, 255, 275)
+        else:
+            self.bloque_siguiente.dibuja(screen, 270, 270)
+        return
