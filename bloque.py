@@ -35,7 +35,7 @@ class Bloque:
     def deshacer_rotar(self):
         self.estado_rotacion -= 1
         if self.estado_rotacion == -1:
-            self.estado_rotacion = 0
+            self.estado_rotacion = len(self.celdas) - 1
         return
 
     def dibuja(self, screen):
